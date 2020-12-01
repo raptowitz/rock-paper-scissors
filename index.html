@@ -7,7 +7,7 @@
     <script>
         // Generate random integer 0,1,2, assign integers to Rock, Paper, & Scissors, output move
         function computerPlay(){
-            let randomNum = Math.floor(Math.random()*3)
+            let randomNum = Math.floor(Math.random()*3);
             if (randomNum === 0) {
                 return ("Rock");
             }
@@ -19,53 +19,53 @@
             }
         }
 
+        //how to play one round of Rock, Paper, Scissors
         function playRound(playerSelection, computerSelection){
             // make fuction case insensitive so user can input rock, ROCK, RocK, or any other variation
-            let playerSelection2 = playerSelection.slice(0,1).toUpperCase() + playerSelection.slice(1).toLowerCase()
+            let playerSelectionClean = playerSelection.slice(0,1).toUpperCase() + playerSelection.slice(1).toLowerCase();
            
-           //user and computer play the same thing
-            if (playerSelection2 === computerSelection){
-                return ("Tie!");
+           //if user and computer play the same thing they tie
+            if (playerSelectionClean === computerSelection){
+                return (0);
             }
-           
-            // user plays rock and computer plays paper 
-            else if (playerSelection2 === "Rock" && computerSelection === "Paper"){
-                return ("You Lose! Paper beats Rock");
+            //user loses in three cases
+            else if (playerSelectionClean === "Rock" && computerSelection === "Paper" || 
+                    playerSelectionClean === "Paper" && computerSelection === "Scissors" ||
+                    playerSelectionClean === "Scissors" && computerSelection === "Rock"){
+                return (-1);
             }
-
-            //user plays rock and computer plays scissors 
-            else if (playerSelection2 === "Rock" && computerSelection === "Scissors"){
-                return ("You win! Rock beats Scissors")
+            //if user doesn't lose or tie then they win
+            else{
+                return (1);
             }
-
-            //user plays paper and computer plays rock
-            else if (playerSelection2 === "Paper" && computerSelection === "Rock"){
-                return ("You Win! Paper beats Rock");
-            }
-
-            // user plays paper and computer plays scissors
-            else if (playerSelection2 === "Paper" && computerSelection === "Scissors"){
-                return ("You Lose! Scissors beats Papper");
-            }
-
-            //user plays scissors and computer plays rock 
-            else if (playerSelection2 === "Scissors" && computerSelection === "Rock"){
-                return ("You Lose! Rock beats Scissors");
-            }
-
-            //user plays scissors and computer plays paper 
-            else if (playerSelection2 === "Scissors" && computerSelection === "Paper"){
-                return ("You Win! Scissors beats Paper");
-            }
-    
         }
-
-        const computerSelection = computerPlay();
-        let playerSelection = window.prompt("Rock Paper Scissors?");
+         
+        //five rounds of Rock, Paper, Scissors game using console.log() to display the results of each round and the winner at the end
+        function game(){
+            let round1 = playRound(window.prompt("Rock Paper Scissors?"), computerPlay());
+            console.log (round1)
+            let round2 = playRound(window.prompt("Rock Paper Scissors?"), computerPlay());
+            console.log (round2)
+            let round3 = playRound(window.prompt("Rock Paper Scissors?"), computerPlay());
+            console.log (round3)
+            let round4 = playRound(window.prompt("Rock Paper Scissors?"), computerPlay());
+            console.log (round4)
+            let round5 = playRound(window.prompt("Rock Paper Scissors?"), computerPlay());
+            console.log (round5)
+            let gamescore = round1 + round2 + round3 + round4 + round5;
+            if (gamescore > 0){
+                return ("You win!");
+            } 
+            else if (gamescore < 0){
+                return ("You lose!");
+            }
+            else {
+                return("Tie!");
+            }
+        }
         
-        //test game
-        console.log(playRound(playerSelection, computerSelection));
-
+        //run game in the console
+        console.log(game());
 
     </script>
 </body>    

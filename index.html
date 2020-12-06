@@ -8,8 +8,11 @@
     <button type = "button" id = "Rock">Rock</button>
     <button type = "button" id = "Paper">Paper</button>
     <button type = "button" id = "Scissors">Scissors</button>
-    <div class = "results"></div>
-    <div class = "computerMove"></div>
+
+    <div class = "computerMove">Computer chose: </div>
+    <div class = "playerScore">Your score is 0</div>
+    <div class = "computerScore">The computer's score is 0</div>
+
     
     <script>
         function computerPlay(){
@@ -27,40 +30,54 @@
 
         function playRound(playerSelection, computerSelection){
             if (playerSelection === computerSelection){
-                return ("TIE!");
+                return (0);
             }
             else if (playerSelection === "Rock" && computerSelection === "Paper" || 
                     playerSelection === "Paper" && computerSelection === "Scissors" ||
                     playerSelection === "Scissors" && computerSelection === "Rock"){
-                return ("YOU LOSE!");
+                return (-1);
             }
             else{
-                return ("YOU WIN!");
+                return (1);
             }
         }
 
         const buttons = document.querySelectorAll('button');
-        
         buttons.forEach(button => button.addEventListener('click', function(e){
                 playerSelection = e.target.id;
                 computerSelection = computerPlay();
-                let match = playRound(playerSelection, computerSelection); 
-
-                let results = document.querySelector('.results');
-                results.textContent = match;
+                match = playRound(playerSelection, computerSelection); 
 
                 let computerMove = document.querySelector('.computerMove');
-                computerMove.textContent = "Computer chose " + computerSelection;
+                computerMove.textContent = "Computer chose: " + computerSelection;
 
-
+                return keepScore()
             })
         );
+
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function keepScore(){    
+            if (match == 1 ){
+                playerScore++;
+                let playerScoreDiv = document.querySelector('.playerScore');
+                playerScoreDiv.textContent = "Your score is " + playerScore;
+                return playerScoreDiv;
+            }
+            else if (match == -1){
+                computerScore++;
+                let computerScoreDiv = document.querySelector('.computerScore');
+                computerScoreDiv.textContent = "The computer's score is " + computerScore;
+                return computerScoreDiv;
+            }
+        }
 
         
         let playerSelection;
         let computerSelection;
+        let match;
 
-        
 
     </script>
 </body>    

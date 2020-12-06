@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        // Generate random integer 0,1,2, assign integers to Rock, Paper, & Scissors, output move
+        function computerPlay(){
+            let randomNum = Math.floor(Math.random()*3);
+            if (randomNum === 0) {
+                return ("Rock");
+            }
+            else if (randomNum === 1) {
+                return ("Paper");
+            }
+            else {
+                return ("Scissors");
+            }
+        }
+
+        //how to play one round of Rock, Paper, Scissors
+        function playRound(playerSelection, computerSelection){
+            // make fuction case insensitive so user can input rock, ROCK, RocK, or any other variation
+            let playerSelectionClean = playerSelection.slice(0,1).toUpperCase() + playerSelection.slice(1).toLowerCase();
+           
+           //if user and computer play the same thing they tie
+            if (playerSelectionClean === computerSelection){
+                return (0);
+            }
+            //user loses in three cases
+            else if (playerSelectionClean === "Rock" && computerSelection === "Paper" || 
+                    playerSelectionClean === "Paper" && computerSelection === "Scissors" ||
+                    playerSelectionClean === "Scissors" && computerSelection === "Rock"){
+                return (-1);
+            }
+            //if user doesn't lose or tie then they win
+            else{
+                return (1);
+            }
+        }
+         
+        //five rounds of Rock, Paper, Scissors game using console.log() to display the results of each round and the winner at the end
+        function game(){
+            let round1 = playRound(window.prompt("Rock Paper Scissors?"), computerPlay());
+            console.log (round1)
+            let round2 = playRound(window.prompt("Rock Paper Scissors?"), computerPlay());
+            console.log (round2)
+            let round3 = playRound(window.prompt("Rock Paper Scissors?"), computerPlay());
+            console.log (round3)
+            let round4 = playRound(window.prompt("Rock Paper Scissors?"), computerPlay());
+            console.log (round4)
+            let round5 = playRound(window.prompt("Rock Paper Scissors?"), computerPlay());
+            console.log (round5)
+            let gamescore = round1 + round2 + round3 + round4 + round5;
+            if (gamescore > 0){
+                return ("You win!");
+            } 
+            else if (gamescore < 0){
+                return ("You lose!");
+            }
+            else {
+                return("Tie!");
+            }
+        }
+        
+        //run game in the console
+        console.log(game());
+
+    </script>
+</body>    
+</html>

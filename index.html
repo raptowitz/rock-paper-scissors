@@ -20,6 +20,7 @@
     header{
         font-size: 150px;
         color: #2D150A;
+        margin-top: 10px;
     }
 
     .moves{
@@ -29,8 +30,8 @@
     }
 
     .button{
-        width: 400px;
-        height: 400px;
+        width: 25%;
+        height: 25%;
         outline: none;
     }
 
@@ -44,8 +45,9 @@
     }
 
     .scoreBoard{
-        margin-left: 30%;
-        margin-right: 30%;
+        margin-left: 10%;
+        margin-right: 10%;
+        bottom: 10%;
         font-size: 20px;
     }
 
@@ -59,24 +61,25 @@
         padding: 20px;
     }
     
+    @keyframes fadein{
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+    }
     .results{
         position: absolute;
         left: 10%;
         right: 10%;
         top: 200px;
-        font-size: 75px;
-    }
-   
-    @keyframes fadein{
-            0% {opacity: 0;}
-            100% {opacity: 1;}
+        font-size: 60px;
     }
 
     .quote{
         margin-top: 20px;
+    }
+
+    .quoteAppear{
         animation-name: fadein;
         animation-duration: 3s;
-        animation-iteration-count: 1;
     }
 
     
@@ -172,7 +175,8 @@
 
         function generateQuote(){
             let randomNumber = Math.floor(Math.random()* cowboySayings.length);
-            return quote.textContent = cowboySayings[randomNumber];
+            quote.textContent = cowboySayings[randomNumber];
+            return quote.classList.add("quoteAppear");
         }
 
         const buttons = document.querySelectorAll("input");

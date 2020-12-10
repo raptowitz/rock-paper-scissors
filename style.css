@@ -1,0 +1,79 @@
+@font-face {
+    font-family: "western";
+    src: url("CowboyJunior-GO6Dq.ttf");
+}
+
+body{
+    font-family: western, arial;
+}
+
+.center{
+    text-align: center;
+}
+
+header{
+    font-size: 150px;
+    color: #2D150A;
+    margin-top: 10px;
+}
+
+.moves{
+    background-color: #82624E;
+    border-radius: 10px;
+    width: 200px;
+}
+
+.button{
+    width: 25%;
+    height: 25%;
+    outline: none;
+}
+
+.button:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.computerMove{
+    margin: 20px;
+}
+
+.scoreBoard{
+    position: fixed;
+    left: 20%;
+    right: 20%;
+    bottom: 10%;
+    top: 80%;
+    font-size: 20px;
+}
+
+.computerScore{
+    float: right;
+    padding: 20px;
+}
+
+.playerScore{
+    float: left;
+    padding: 20px;
+}
+
+@keyframes fadein{
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+}
+.results{
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 200px;
+    font-size: 60px;
+}
+
+.quote{
+    margin-top: 20px;
+}
+
+.quoteAppear{
+    animation-name: fadein;
+    animation-duration: 3s;
+}

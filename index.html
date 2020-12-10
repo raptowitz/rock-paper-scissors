@@ -45,9 +45,11 @@
     }
 
     .scoreBoard{
-        margin-left: 10%;
-        margin-right: 10%;
+        position: fixed;
+        left: 20%;
+        right: 20%;
         bottom: 10%;
+        top: 80%;
         font-size: 20px;
     }
 
@@ -138,12 +140,9 @@
 
         function playGame(e) {
             let playerSelection = e.target.id;
-            console.log(playerSelection);
             let computerSelection = computerPlay();
-            console.log(computerSelection);
             computerMove.textContent = "Computer chose " + computerSelection;
             let match = playRound(playerSelection, computerSelection); 
-            console.log(match);
             
             if (match === 1 && playerScore<4){
                 playerScore++;

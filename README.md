@@ -1,2 +1,2 @@
 # rock-paper-scissors
-A game of Rock, Paper, Scissors played between a user and the computer in the console. My first time using JS, implementing functions, utilizing comparison and logical operators.
+A game of Rock, Paper, Scissors played between a user and the computer in the browser. My first time using JS, implementing functions, utilizing comparison and logical operators, and DOM manipulation. Cowboy themed in CSS!
